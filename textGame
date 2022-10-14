@@ -1,3 +1,4 @@
 #!/bin/bash
 echo "Welcome to the game."
 echo "You will learn about Linux."
+echo "This will be fun."
