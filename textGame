@@ -21,20 +21,27 @@ clear
 echo "Riddle 1"
 echo "What walks on four feet in the morning, two in the afternoon, and three at night?"
 answer="def"
+tries=5
+while [ "${answer^^}" != 'MAN' -a $tries -gt 0 ]
+do
 read -p ">>" answer
 if [ "${answer^^}" = 'MAN' ]
 	then
 		echo "That's right! 'man' is the command that tells you what other commands do."
 		echo "Let's practice using 'man'. Type in 'man man' to read the manual page on the 'man' utility."
+		while [ "${answer^^}" != 'MAN MAN' ]
+		do
 		read -p ">>" answer
 		if [ "${answer^^}" = 'MAN MAN' ] 
 			then
-				man man
+				$answer
 				echo "Commands learned: 1"
 			else
 				echo "Follow the instructions to advance."
 		fi
-	else
-		echo "Incorrect. 4 attempts remaining."
+		done
+		else
+			echo "Incorrect. $tries attempts remaining."
+			((tries=tries-1))
 fi
-
+done
