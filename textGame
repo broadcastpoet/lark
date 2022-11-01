@@ -1,8 +1,40 @@
 #!/bin/bash
+clear
 echo "Huh?..."
 echo "Why, yes I am Ixuln, the all-knowing sage."
-echo "IXULN: What is it you wish to know?"
-echo "IXULN: That's what you want? It's only fair I ask for something in return, isn't it?"
-echo "IXULN: Solve these riddles, and I will give you the knowledge that you seek."
-echo "IXULN: Fail, and all will be lost..."
-echo "IXULN: It was just a joke, supplicant. It's not that serious.  Ha ha ha, what an amusing reaction!"
+echo "What is it you wish to know?"
+echo "That's what you want? It's only fair I ask for something in return, isn't it?"
+echo "Solve these riddles, and I will give you the knowledge that you seek."
+echo "Fail, and all will be lost..."
+next="string"
+read -p "Press Enter to continue" $next
+clear
+echo "Huh?..."
+echo "Why, yes I am Ixuln, the all-knowing sage."
+echo "What is it you wish to know?"
+echo "That's what you want? It's only fair I ask for something in return, isn't it?"
+echo "Solve these riddles, and I will give you the knowledge that you seek."
+echo "Fail, and all will be lost..."
+echo "It was just a joke, supplicant. It's not that serious.  Ha ha ha, what an amusing reaction!"
+read -p "Press Enter to continue" $next
+clear
+echo "Riddle 1"
+echo "What walks on four feet in the morning, two in the afternoon, and three at night?"
+answer="def"
+read -p ">>" answer
+if [ "${answer^^}" = 'MAN' ]
+	then
+		echo "That's right! 'man' is the command that tells you what other commands do."
+		echo "Let's practice using 'man'. Type in 'man man' to read the manual page on the 'man' utility."
+		read -p ">>" answer
+		if [ "${answer^^}" = 'MAN MAN' ] 
+			then
+				man man
+				echo "Commands learned: 1"
+			else
+				echo "Follow the instructions to advance."
+		fi
+	else
+		echo "Incorrect. 4 attempts remaining."
+fi
+
