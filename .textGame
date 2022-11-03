@@ -1,0 +1,94 @@
+#!/bin/bash
+clear
+echo "Huh?..."
+echo "Why, yes I am Ixuln, the all-knowing sage."
+echo "What is it you wish to know?"
+echo "That's what you want? It's only fair I ask for something in return, isn't it?"
+echo "Solve these riddles, and I will give you the knowledge that you seek."
+echo "Fail, and all will be lost..."
+next="string"
+read -p "Press Enter to continue" $next
+clear
+echo "Huh?..."
+echo "Why, yes I am Ixuln, the all-knowing sage."
+echo "What is it you wish to know?"
+echo "That's what you want? It's only fair I ask for something in return, isn't it?"
+echo "Solve these riddles, and I will give you the knowledge that you seek."
+echo "Fail, and all will be lost..."
+echo "It was just a joke, supplicant. It's not that serious.  Ha ha ha, what an amusing reaction!"
+read -p "Press Enter to continue" $next
+clear
+echo "Riddle 1"
+echo "What walks on four feet in the morning, two in the afternoon, and three at night?"
+answer="def"
+tries=5
+while [ "${answer^^}" != 'MAN' -a $tries -gt 0 ]
+do
+	read -p ">>" answer
+	if [ "${answer^^}" = 'MAN' ]
+		then
+			echo "That's right! 'man' is the command that tells you what other commands do."
+			echo "Let's practice using 'man'. Type in 'man man' to read the manual page on the 'man' utility."
+			while [ "${answer^^}" != 'MAN MAN' ]
+			do
+				read -p ">>" answer
+				if [ "${answer^^}" = 'MAN MAN' ] 
+					comStatus=0
+					then
+						$answer > .out 2>&1 && comStatus=1
+						if [ $comStatus -eq 1 ]
+							then
+								$answer
+								echo "Commands learned: 1"
+								read -p "Press Enter to continue" next
+								answer="Man"
+								break
+							else
+								answer="Man"
+								echo "Follow the instructions to advance."
+						fi
+				else
+					echo "Follow the instructions to advance."
+				fi
+			done
+	else
+		((tries=tries-1))
+		echo "Incorrect. $tries attempts remaining."
+	fi
+done
+if [ $tries -eq 0 ] 
+	then
+		echo "You used up all tries. The game is over."
+fi
+if [ $tries -ne 0 ]
+	then
+		clear
+		echo "Riddle 2"
+		echo "For the next puzzle, translate this sequence of numbers into a word. If you're stuck, then just ASC for help."
+		echo "116, 111, 117, 99, 104"
+		tries=5
+		while [	"${answer^^}" != 'TOUCH' -a $tries -gt 0 ]
+			do
+				read -p ">>" answer
+				if [ "${answer^^}" = 'TOUCH' ]
+					then
+						echo "Well done! 'touch' is the command that creates files."
+						echo "Let's practice using 'touch'. Type in 'touch newFile'."
+						while [ "${answer^^}" != 'TOUCH NEWFILE' ]
+						do
+							read -p ">>" answer
+							if [ "${answer^^}" = 'TOUCH NEWFILE' ]
+								then
+									echo "Commands learned: 2"
+									answer="Touch"
+									break
+								else
+									echo "Follow the instructions to advance."
+							fi
+						done
+					else
+						((tries=tries-1))
+						echo "Incorrect. $tries attempts remaining."
+				fi	
+		done		 
+fi
