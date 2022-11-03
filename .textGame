@@ -79,9 +79,18 @@ if [ $tries -ne 0 ]
 							read -p ">>" answer
 							if [ "${answer^^}" = 'TOUCH NEWFILE' ]
 								then
-									echo "Commands learned: 2"
-									answer="Touch"
-									break
+									comStatus=0
+									$answer > .out 2>&1 && comStatus=1
+									if [ $comStatus -eq 1 -a $? -eq 0 ] 
+										then
+											$answer
+											echo "Commands learned: 2"
+											answer="Touch"
+											break
+										else
+											answer="Touch"
+											echo "Follow the instructions to advance."
+									fi
 								else
 									echo "Follow the instructions to advance."
 							fi
@@ -90,5 +99,9 @@ if [ $tries -ne 0 ]
 						((tries=tries-1))
 						echo "Incorrect. $tries attempts remaining."
 				fi	
-		done		 
+		done		
+	if [ $tries -eq 0 ] 
+		then
+			echo "You used up all tries. The game is over."
+	fi 
 fi
