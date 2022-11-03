@@ -31,17 +31,38 @@ if [ "${answer^^}" = 'MAN' ]
 		echo "Let's practice using 'man'. Type in 'man man' to read the manual page on the 'man' utility."
 		while [ "${answer^^}" != 'MAN MAN' ]
 		do
-		read -p ">>" answer
-		if [ "${answer^^}" = 'MAN MAN' ] 
+		read -p ">>" answer1
+		if [ "${answer1^^}" = 'MAN MAN' ] 
 			then
-				$answer
+				$answer1
 				echo "Commands learned: 1"
+				break
 			else
 				echo "Follow the instructions to advance."
 		fi
 		done
 		else
-			echo "Incorrect. $tries attempts remaining."
 			((tries=tries-1))
+			echo "Incorrect. $tries attempts remaining."
 fi
 done
+if [ $tries -eq 0 ] 
+	then
+		echo "You used up all tries. The game is over."
+fi
+if [ $tries -ne 0 ]
+then
+clear
+echo "Riddle 2"
+echo "For the next puzzle, translate this sequence of numbers into a word. If you're stuck, then just ASC for help."
+echo "116, 111, 117, 99, 104"
+answer1="word"
+tries=5
+while [	"${answer1^^}" != 'TOUCH' -a $tries -gt 0 ]
+do
+read -p ">>" answer1
+if [ "${answer1^^}" = 'TOUCH' ]
+then
+echo "Well done! 'touch' is the command that creates files."			 
+fi
+
